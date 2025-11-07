@@ -1,13 +1,11 @@
-#ifndef BIDIRECTIONAL_H
-#define BIDIRECTIONAL_H
-
+#pragma once
 #include "Graph.h"
+#include <utility>
 #include <vector>
-#include <unordered_map>
+
 
 class Bidirectional {
 public:
-    static double bidirectional_dijkstra(const Graph& graph, int source, int destination);
+  static std::pair<double, std::vector<int>>
+  bidirectional_dijkstra(const Graph &graph, int source, int destination);
 };
-
-#endif
