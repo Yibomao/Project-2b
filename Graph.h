@@ -1,17 +1,17 @@
-#ifndef GRAPH_H
-#define GRAPH_H
-
-#include <vector>
-#include <utility>
+#pragma once
+#include <string>
 #include <unordered_map>
+#include <utility>
+#include <vector>
+
 
 class Graph {
-public:
-    void addEdge(int from, int to, double weight);
-    const std::unordered_map<int, std::vector<std::pair<int, double>>>& getAdjList() const;
-
 private:
-    std::unordered_map<int, std::vector<std::pair<int, double>>> adjList;
-};
+  std::unordered_map<int, std::vector<std::pair<int, double>>> adjList;
 
-#endif
+public:
+  void addEdge(int from, int to, double weight);
+  const std::unordered_map<int, std::vector<std::pair<int, double>>> &
+  getAdjList() const;
+  void loadGraphFromFile(const std::string &filename);
+};
