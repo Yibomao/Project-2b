@@ -8,7 +8,6 @@
 #include <unordered_map>
 #include <vector>
 
-
 #ifdef __linux__
 #include <sys/resource.h>
 #endif
@@ -27,13 +26,12 @@ double getMemoryUsageMB() {
 
 int main() {
   Graph graph;
-  graph.addEdge(1, 2, 2.5);
-  graph.addEdge(1, 3, 1.2);
-  graph.addEdge(2, 4, 3.0);
-  graph.addEdge(3, 4, 1.5);
-  graph.addEdge(4, 5, 2.0);
+  cout << "Loading road network graph..." << endl;
+  graph.loadGraphFromFile("roadNet-CA.txt");
 
-  int start = 1, goal = 5;
+  // start and goal
+  int start = 0;    
+  int goal = 1965206;
 
   cout << "===============================\n";
   cout << " Comparing Dijkstra Algorithms\n";
@@ -81,3 +79,4 @@ int main() {
   cout << "===============================\n";
   return 0;
 }
+
