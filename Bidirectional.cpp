@@ -16,7 +16,7 @@ Bidirectional::bidirectional_dijkstra(const Graph &graph, int source,
   unordered_map<int, int> prevD;
   unordered_set<int> visS;
   unordered_set<int> visD;
-  auto adj = graph.getAdjList();
+  const auto &adj = graph.getAdjList();
 
   for (auto &node : adj) {
     dists[node.first] = numeric_limits<double>::infinity();
@@ -45,7 +45,7 @@ Bidirectional::bidirectional_dijkstra(const Graph &graph, int source,
         continue;
       visS.insert(u1);
 
-      for (auto [v, w] : adj[u1]) {
+      for (auto [v, w] : adj.at(u1)) {
         if (dists[v] > dists[u1] + w) {
           dists[v] = dists[u1] + w;
           prevS[v] = u1;
@@ -65,7 +65,7 @@ Bidirectional::bidirectional_dijkstra(const Graph &graph, int source,
         continue;
       visD.insert(u2);
 
-      for (auto [v, w] : adj[u2]) {
+      for (auto [v, w] : adj.at(u2)) {
         if (distd[v] > distd[u2] + w) {
           distd[v] = distd[u2] + w;
           prevD[v] = u2;

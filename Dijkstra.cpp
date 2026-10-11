@@ -4,7 +4,7 @@
 #include <iostream>
 
 std::unordered_map<int, double> Dijkstra::shortestPath(const Graph& graph, int start) {
-    auto adj = graph.getAdjList();
+    const auto& adj = graph.getAdjList();
     std::unordered_map<int, double> dist;
 
     // Initialize all distances to infinity
@@ -28,7 +28,7 @@ std::unordered_map<int, double> Dijkstra::shortestPath(const Graph& graph, int s
 
         if (d > dist[u]) continue; // Skip outdated entry
 
-        for (auto [v, w] : adj[u]) {
+        for (auto [v, w] : adj.at(u)) {
             if (dist[u] + w < dist[v]) {
                 dist[v] = dist[u] + w;
                 pq.push({dist[v], v});
